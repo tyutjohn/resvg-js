@@ -26,12 +26,15 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Compile artifacts
+        run: npm run artifacts
+
       - name: Publish package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           if [ "${{ github.ref }}" == "refs/heads/fix/memory" ]; then
             npm publish --tag beta
           else
             npm publish
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
