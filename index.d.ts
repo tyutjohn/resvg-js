@@ -95,4 +95,7 @@ export class RenderedImage {
 
   /** Get the PNG height */
   get height(): number
+
+  /** free RenderedImage */
+  free(): void
 }

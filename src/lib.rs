@@ -131,6 +131,12 @@ impl RenderedImage {
     pub fn height(&self) -> u32 {
         self.pix.height()
     }
+
+    #[cfg(not(target_arch = "wasm32"))]
+    #[napi]
+    pub fn free(&mut self) {
+        self.pix = Pixmap::new(1,1).expect("Err")
+    }
 }
 
 #[cfg(not(target_arch = "wasm32"))]
