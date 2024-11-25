@@ -135,7 +135,7 @@ impl RenderedImage {
     #[cfg(not(target_arch = "wasm32"))]
     #[napi]
     pub fn free(&mut self) {
-        self.pix = Pixmap::new(1,1).expect("Failed to create empty Pixmap");
+        self.pix = Pixmap::new(1, 1).expect("Failed to create empty Pixmap");
     }
 }
 
@@ -284,7 +284,7 @@ impl Resvg {
                 rect: usvg::NonZeroRect::from_ltrb(0.0, 0.0, 1.0, 1.0).unwrap(),
                 aspect: usvg::AspectRatio::default(),
             },
-            root: usvg::Node::new(usvg::NodeKind::Group(usvg::Group::default()))
+            root: usvg::Node::new(usvg::NodeKind::Group(usvg::Group::default())),
         };
 
         self.js_options = JsOptions::default();
